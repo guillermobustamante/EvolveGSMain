@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CTA from '../components/CTA.astro';
+
+const services = [
+  {
+    id: 'copilot',
+    title: 'Microsoft Copilot Adoption & Governance',
+    summary:
+      "Copilot for Microsoft 365 is only valuable when your tenant is ready. We assess data, identity, and licensing readiness, build the governance guardrails, and run a measurable pilot.",
+    bullets: [
+      'Copilot readiness & data oversharing assessment',
+      'Microsoft Purview, sensitivity labels, and DLP setup',
+      'Pilot design, KPIs, and adoption tracking',
+      'Custom Copilot Studio agents for line-of-business tasks',
+      'Change management, training, and champion enablement',
+    ],
+  },
+  {
+    id: 'approval',
+    title: 'AI-Powered Document Approval',
+    summary:
+      'Our flagship offering, reimagined. Combine Power Automate, Copilot Studio agents, and AI Builder to make approval flows that read the document, route it correctly, and explain exceptions.',
+    bullets: [
+      'Intelligent intake — extract fields from PDFs and emails',
+      'Dynamic routing based on policy and risk',
+      'Approval agents with human-in-the-loop checkpoints',
+      'Audit-ready trail and SLA tracking',
+      'Integration with SharePoint, Dynamics, and SAP',
+    ],
+  },
+  {
+    id: 'sharepoint',
+    title: 'SharePoint & Modern Workplace',
+    summary:
+      'Migrate, consolidate, and modernize SharePoint, Teams, and OneDrive into a governed intranet platform that people actually use.',
+    bullets: [
+      'Tenant-to-tenant and on-prem to SharePoint Online migrations',
+      'Intranet, hub-site, and Viva Connections design',
+      'Records management, retention, and eDiscovery policy',
+      'Teams governance and lifecycle',
+      'Information architecture and search tuning',
+    ],
+  },
+  {
+    id: 'power-platform',
+    title: 'Power Platform & Modern Apps',
+    summary:
+      "Replace fragile spreadsheets and legacy apps with Power Apps, Power Automate, and Dataverse — with the ALM and CoE practices that keep it sustainable.",
+    bullets: [
+      'Power Apps (canvas & model-driven) development',
+      'Power Automate cloud flows and RPA',
+      'Dataverse data modeling and security',
+      'Custom connectors and API integration',
+      'CoE Starter Kit, ALM, and governance',
+    ],
+  },
+  {
+    id: 'fabric',
+    title: 'Microsoft Fabric & Analytics',
+    summary:
+      'Unify data, build semantic models, and surface trustworthy insights with Microsoft Fabric and Power BI — including verified answers your team can rely on.',
+    bullets: [
+      'OneLake & medallion architecture',
+      'Data factory, notebooks, and pipelines',
+      'Semantic models with row-level security',
+      'Power BI report design and embedding',
+      'Verified answers and Copilot for Fabric enablement',
+    ],
+  },
+  {
+    id: 'nearshore',
+    title: 'Nearshore Delivery & Augmentation',
+    summary:
+      'Senior engineers in your time zone, blended rates, and tight feedback loops. The right way to outsource — without sacrificing quality.',
+    bullets: [
+      'Same-time-zone delivery teams',
+      'Cultural and language alignment',
+      'Up to 40% cost reduction vs. local-only teams',
+      'Flexible team augmentation or full project delivery',
+      'Direct access to architects, not just developers',
+    ],
+  },
+];
+---
+<BaseLayout title="Services — Evolve Global Solutions" description="Microsoft Copilot adoption, AI document approval, SharePoint modernization, Power Platform, Microsoft Fabric, and nearshore delivery.">
+  <Hero
+    eyebrow="Our services"
+    title="Microsoft consulting, built for an AI-first 2026."
+    description="Six service lines, one philosophy: senior teams, fixed-fee outcomes, and Microsoft reference architectures so your investment stays supported."
+    primaryCta={{ href: '/contact', label: 'Talk to an architect' }}
+    secondaryCta={{ href: '/products', label: 'See our products' }}
+  />
+
+  <section class="section">
+    <div class="container-page space-y-12">
+      {services.map((s, i) => (
+        <article id={s.id} class="card p-8 sm:p-10 grid gap-8 lg:grid-cols-3 lg:items-start">
+          <div class="lg:col-span-1">
+            <div class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-100 text-sm font-semibold">{String(i + 1).padStart(2, '0')}</div>
+            <h2 class="h3 mt-4">{s.title}</h2>
+          </div>
+          <div class="lg:col-span-2">
+            <p class="text-ink-600 leading-relaxed">{s.summary}</p>
+            <ul class="mt-5 grid gap-2 sm:grid-cols-2">
+              {s.bullets.map((b) => (
+                <li class="flex items-start gap-2 text-sm text-ink-700">
+                  <svg viewBox="0 0 24 24" class="mt-0.5 h-4 w-4 flex-none text-accent-600" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12l5 5L20 7"/></svg>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>

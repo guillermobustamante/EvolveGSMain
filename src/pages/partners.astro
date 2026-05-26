@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CTA from '../components/CTA.astro';
+
+const partners = [
+  { name: 'Microsoft', focus: 'Cloud, AI, Modern Workplace', detail: 'Microsoft Solutions Partner — Modern Work, Data & AI, and Digital & App Innovation designations.' },
+  { name: 'Azure', focus: 'Infrastructure & AI Services', detail: 'Hosting, identity, and AI services for every solution we deliver, including this very site.' },
+  { name: 'Power Platform', focus: 'Low-code & Automation', detail: 'Power Apps, Power Automate, Power Pages, and Copilot Studio specialists.' },
+  { name: 'Microsoft Fabric', focus: 'Data & Analytics', detail: 'OneLake, Data Factory, Real-Time Intelligence, and Power BI semantic modeling.' },
+  { name: 'ARAS Innovator', focus: 'Product Lifecycle Management', detail: 'Implementation and Microsoft 365 integration for manufacturing customers.' },
+  { name: 'Copilot Studio', focus: 'Custom AI Agents', detail: 'Building domain-specific Copilot agents that automate approvals, intake, and customer service.' },
+];
+---
+<BaseLayout title="Partners — Evolve Global Solutions" description="Microsoft Solutions Partner. Azure, Power Platform, Microsoft Fabric, ARAS PLM, and Copilot Studio specialists.">
+  <Hero
+    eyebrow="Partnerships"
+    title="The Microsoft ecosystem is our home."
+    description="We do not chase logos. The platforms below are the ones we go deep on — and the only ones we recommend to our clients."
+  />
+
+  <section class="section">
+    <div class="container-page grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {partners.map((p) => (
+        <div class="card p-7">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-cta-gradient text-white shadow-soft">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+            </span>
+            <div>
+              <h3 class="font-semibold text-ink-900">{p.name}</h3>
+              <p class="text-xs text-ink-500">{p.focus}</p>
+            </div>
+          </div>
+          <p class="mt-4 text-sm text-ink-600 leading-relaxed">{p.detail}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CTA title="Want us to bring this stack to your team?" ctaLabel="Get in touch" />
+</BaseLayout>

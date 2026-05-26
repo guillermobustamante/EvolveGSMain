@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Contact — Evolve Global Solutions" description="Get in touch with Evolve Global Solutions. Email hi@evolvegs.com or call +1 (416) 560-4137.">
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-hero-gradient" aria-hidden="true"></div>
+    <div class="container-page relative pt-20 pb-24 sm:pt-28">
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
+        <div>
+          <span class="eyebrow">Get in touch</span>
+          <h1 class="h1 mt-5">Let's talk about what you're solving.</h1>
+          <p class="lead mt-5">
+            Tell us the business outcome you're after — Copilot adoption, AI document approval, a SharePoint
+            migration, a Fabric platform — and we'll come back within one business day with concrete next steps.
+          </p>
+
+          <div class="mt-10 grid gap-4 sm:grid-cols-2">
+            <a href="mailto:hi@evolvegs.com?subject=New%20inquiry%20from%20evolvegs.com" class="card p-5 group">
+              <div class="text-xs font-semibold uppercase tracking-wider text-ink-500">Email</div>
+              <div class="mt-1 text-lg font-semibold text-ink-900 group-hover:text-brand-700">hi@evolvegs.com</div>
+              <div class="mt-1 text-sm text-ink-600">Replies in &lt; 1 business day</div>
+            </a>
+            <a href="tel:+14165604137" class="card p-5 group">
+              <div class="text-xs font-semibold uppercase tracking-wider text-ink-500">Phone</div>
+              <div class="mt-1 text-lg font-semibold text-ink-900 group-hover:text-brand-700">+1 (416) 560-4137</div>
+              <div class="mt-1 text-sm text-ink-600">Mon–Fri, 9am–6pm ET</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="card p-8">
+          <h2 class="h3">Send us a note</h2>
+          <p class="mt-2 text-sm text-ink-600">Fill in the fields below — it will open your email client with everything pre-filled. No data is sent to us until you hit send.</p>
+          <form id="contact-form" class="mt-6 space-y-4" novalidate>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <label class="block">
+                <span class="text-sm font-medium text-ink-800">Your name</span>
+                <input required type="text" name="name" class="mt-1 block w-full rounded-xl border-ink-200 bg-white px-3 py-2.5 text-sm shadow-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200" placeholder="Jane Doe" />
+              </label>
+              <label class="block">
+                <span class="text-sm font-medium text-ink-800">Company</span>
+                <input type="text" name="company" class="mt-1 block w-full rounded-xl border-ink-200 bg-white px-3 py-2.5 text-sm shadow-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200" placeholder="Acme Inc." />
+              </label>
+            </div>
+            <label class="block">
+              <span class="text-sm font-medium text-ink-800">Your email</span>
+              <input required type="email" name="email" class="mt-1 block w-full rounded-xl border-ink-200 bg-white px-3 py-2.5 text-sm shadow-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200" placeholder="jane@acme.com" />
+            </label>
+            <label class="block">
+              <span class="text-sm font-medium text-ink-800">What do you need help with?</span>
+              <select name="topic" class="mt-1 block w-full rounded-xl border-ink-200 bg-white px-3 py-2.5 text-sm shadow-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200">
+                <option>Microsoft Copilot adoption</option>
+                <option>AI document approval</option>
+                <option>SharePoint / Modern Workplace</option>
+                <option>Power Platform</option>
+                <option>Microsoft Fabric / Power BI</option>
+                <option>Nearshore augmentation</option>
+                <option>Something else</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class="text-sm font-medium text-ink-800">Message</span>
+              <textarea required name="message" rows="5" class="mt-1 block w-full rounded-xl border-ink-200 bg-white px-3 py-2.5 text-sm shadow-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200" placeholder="Tell us a bit about the project, timeline, and any constraints."></textarea>
+            </label>
+            <button type="submit" class="btn-primary w-full sm:w-auto">
+              Open in email
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+            <p class="text-xs text-ink-500">By submitting, you agree to be contacted at the email above. We will never share your details.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('contact-form') as HTMLFormElement | null;
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const name = (data.get('name') ?? '').toString().trim();
+        const company = (data.get('company') ?? '').toString().trim();
+        const email = (data.get('email') ?? '').toString().trim();
+        const topic = (data.get('topic') ?? '').toString();
+        const message = (data.get('message') ?? '').toString();
+        const subject = `Inquiry: ${topic}${company ? ' — ' + company : ''}`;
+        const body =
+          `Hi Evolve team,\n\n${message}\n\n— ${name}${company ? ', ' + company : ''}\n${email}`;
+        const href = `mailto:hi@evolvegs.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = href;
+      });
+    }
+  </script>
+</BaseLayout>

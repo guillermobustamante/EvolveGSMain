@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/CTA.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const fmt = post.data.pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+<BaseLayout title={`${post.data.title} — Evolve Global Solutions`} description={post.data.description}>
+  <article class="container-page pt-16 pb-20 max-w-3xl">
+    <a href="/blog" class="text-sm text-brand-700 hover:text-brand-800">← All posts</a>
+    {post.data.heroEyebrow && <span class="eyebrow mt-6">{post.data.heroEyebrow}</span>}
+    <h1 class="h1 mt-5">{post.data.title}</h1>
+    <div class="mt-5 flex flex-wrap items-center gap-3 text-sm text-ink-500">
+      <span>{post.data.author}</span>
+      <span class="text-ink-300">•</span>
+      <time datetime={post.data.pubDate.toISOString()}>{fmt}</time>
+      {post.data.tags.length > 0 && (
+        <>
+          <span class="text-ink-300">•</span>
+          <span class="flex gap-2">
+            {post.data.tags.map((t) => (
+              <span class="rounded-full bg-ink-50 px-2.5 py-0.5 text-xs font-medium text-ink-600 ring-1 ring-inset ring-ink-200">{t}</span>
+            ))}
+          </span>
+        </>
+      )}
+    </div>
+
+    <div class="prose prose-slate mt-10 max-w-none prose-headings:tracking-tight prose-headings:text-ink-900 prose-a:text-brand-700 prose-a:no-underline hover:prose-a:underline prose-strong:text-ink-900">
+      <Content />
+    </div>
+  </article>
+
+  <CTA title="Want to chat about this?" description="If anything here sparked a question about your environment, we're happy to talk." ctaLabel="Get in touch" />
+</BaseLayout>

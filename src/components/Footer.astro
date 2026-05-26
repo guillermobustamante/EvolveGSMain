@@ -1,0 +1,53 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="mt-24 border-t border-ink-200 bg-ink-50">
+  <div class="container-page py-14 grid gap-10 md:grid-cols-4">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-cta-gradient text-white shadow-soft">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
+            <path fill="currentColor" d="M5 4h14v3H8v3h9v3H8v4h11v3H5z" />
+          </svg>
+        </span>
+        <span class="text-sm font-semibold text-ink-900">Evolve Global Solutions</span>
+      </div>
+      <p class="mt-4 max-w-md text-sm text-ink-600">
+        Boutique Microsoft consulting partner specializing in AI-powered document approval, Microsoft Copilot adoption,
+        SharePoint modernization, Power Platform, and Microsoft Fabric — delivered nearshore.
+      </p>
+      <div class="mt-5 flex flex-wrap items-center gap-4 text-sm text-ink-700">
+        <a href="mailto:hi@evolvegs.com" class="hover:text-brand-700">hi@evolvegs.com</a>
+        <span class="text-ink-300">•</span>
+        <a href="tel:+14165604137" class="hover:text-brand-700">+1 (416) 560-4137</a>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-500">Company</h3>
+      <ul class="mt-4 space-y-2 text-sm text-ink-700">
+        <li><a href="/about" class="hover:text-brand-700">About</a></li>
+        <li><a href="/services" class="hover:text-brand-700">Services</a></li>
+        <li><a href="/products" class="hover:text-brand-700">Products</a></li>
+        <li><a href="/partners" class="hover:text-brand-700">Partners</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-500">Resources</h3>
+      <ul class="mt-4 space-y-2 text-sm text-ink-700">
+        <li><a href="/blog" class="hover:text-brand-700">Blog</a></li>
+        <li><a href="/powerbi" class="hover:text-brand-700">Power BI showcase</a></li>
+        <li><a href="/contact" class="hover:text-brand-700">Contact</a></li>
+        <li><a href="https://www.evolvegs.com/login" class="hover:text-brand-700">Client Login</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-ink-200">
+    <div class="container-page py-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-xs text-ink-500">
+      <p>© {year} Evolve Global Solutions Inc. All rights reserved.</p>
+      <p>Built on Astro + Azure Static Web Apps.</p>
+    </div>
+  </div>
+</footer>

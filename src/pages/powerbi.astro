@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CTA from '../components/CTA.astro';
+
+const showcases = [
+  {
+    title: 'Approval performance dashboard',
+    summary:
+      'Live KPIs for approval SLA, bottleneck detection, and exception volume — pulled directly from the Evolve Approval AI audit trail.',
+    metrics: ['Avg. cycle time', 'SLA compliance %', 'Exceptions by reason', 'Top approvers'],
+  },
+  {
+    title: 'Microsoft 365 adoption',
+    summary:
+      'Track Copilot rollout adoption by department, by license type, and by use case. Includes verified answers for executive Q&A.',
+    metrics: ['Active users %', 'Copilot interactions', 'Top use cases', 'Sentiment trend'],
+  },
+  {
+    title: 'Manufacturing OEE',
+    summary:
+      'A semantic model for Overall Equipment Effectiveness, integrated with ARAS PLM and shop-floor signals via Microsoft Fabric Real-Time Intelligence.',
+    metrics: ['Availability', 'Performance', 'Quality', 'OEE rollup'],
+  },
+];
+---
+<BaseLayout title="Power BI showcase — Evolve Global Solutions" description="Sample Power BI dashboards: approval performance, Microsoft 365 adoption, and manufacturing OEE — built on Microsoft Fabric semantic models.">
+  <Hero
+    eyebrow="Power BI showcase"
+    title="See what your data can do — in production."
+    description="A curated set of dashboards we have built for clients. Each one is anchored on a Microsoft Fabric semantic model with verified answers for Copilot."
+    primaryCta={{ href: '/contact', label: 'Request a live demo' }}
+  />
+
+  <section class="section">
+    <div class="container-page space-y-8">
+      {showcases.map((s, i) => (
+        <article class="card p-8 grid gap-8 lg:grid-cols-5 lg:items-center">
+          <div class="lg:col-span-2 aspect-[4/3] rounded-2xl bg-cta-gradient relative overflow-hidden">
+            <div class="absolute inset-0 grid grid-cols-3 gap-3 p-5 opacity-95">
+              {[...Array(6)].map((_, j) => (
+                <div class={`rounded-lg bg-white/20 backdrop-blur-sm ring-1 ring-white/30 ${j % 2 === 0 ? 'h-16' : 'h-24'}`}></div>
+              ))}
+            </div>
+            <div class="absolute bottom-4 left-5 text-white/90 text-xs uppercase tracking-wider">Sample · #{String(i + 1).padStart(2, '0')}</div>
+          </div>
+          <div class="lg:col-span-3">
+            <h3 class="h3">{s.title}</h3>
+            <p class="mt-3 text-ink-600 leading-relaxed">{s.summary}</p>
+            <div class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+              {s.metrics.map((m) => (
+                <div class="rounded-lg bg-ink-50 px-3 py-2 text-xs font-medium text-ink-700 ring-1 ring-inset ring-ink-200">{m}</div>
+              ))}
+            </div>
+            <a href="/contact" class="btn-ghost mt-5">Request this demo →</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <CTA title="Want this on your data?" description="We can stand up a Fabric workspace and a sample semantic model from your data in two weeks." ctaLabel="Start a Fabric POC" />
+</BaseLayout>

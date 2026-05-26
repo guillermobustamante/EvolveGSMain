@@ -1,0 +1,53 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  icon?: string;
+  bullets?: string[];
+  href?: string;
+}
+const { title, description, icon = 'sparkles', bullets = [], href } = Astro.props;
+
+const icons: Record<string, string> = {
+  sparkles: 'M11 3l1.5 4.5L17 9l-4.5 1.5L11 15l-1.5-4.5L5 9l4.5-1.5L11 3zM18 14l.9 2.7L21.6 17l-2.7.9L18 20.6l-.9-2.7L14.4 17l2.7-.9L18 14z',
+  share: 'M4 12v7a2 2 0 002 2h12a2 2 0 002-2v-7M16 6l-4-4-4 4M12 2v14',
+  bolt: 'M13 2L3 14h7l-1 8 10-12h-7l1-8z',
+  globe: 'M12 2a10 10 0 100 20 10 10 0 000-20zM2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20',
+  chart: 'M3 3v18h18M7 15l3-3 4 4 6-6',
+  shield: 'M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6l8-4z',
+  layers: 'M12 2l9 5-9 5-9-5 9-5zm9 10l-9 5-9-5m18 5l-9 5-9-5',
+  spark: 'M12 2v6m0 8v6M2 12h6m8 0h6M5 5l4 4m6 6l4 4M5 19l4-4m6-6l4-4',
+};
+
+const path = icons[icon] ?? icons.sparkles;
+const Tag = href ? 'a' : 'div';
+---
+<Tag href={href} class="card group block p-7">
+  <div class="flex items-start gap-4">
+    <span class="inline-flex h-11 w-11 flex-none items-center justify-center rounded-xl bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-100 transition-colors group-hover:bg-brand-100">
+      <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path stroke-linecap="round" stroke-linejoin="round" d={path}/>
+      </svg>
+    </span>
+    <div class="min-w-0">
+      <h3 class="h3 text-lg sm:text-xl">{title}</h3>
+      <p class="mt-2 text-sm leading-relaxed text-ink-600">{description}</p>
+      {bullets.length > 0 && (
+        <ul class="mt-4 space-y-1.5 text-sm text-ink-700">
+          {bullets.map((b) => (
+            <li class="flex items-start gap-2">
+              <svg viewBox="0 0 24 24" class="mt-0.5 h-4 w-4 flex-none text-accent-600" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12l5 5L20 7"/></svg>
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      {href && (
+        <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-brand-700 group-hover:text-brand-800">
+          Learn more
+          <svg viewBox="0 0 24 24" class="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      )}
+    </div>
+  </div>
+</Tag>

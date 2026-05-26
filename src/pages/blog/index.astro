@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+<BaseLayout title="Blog — Evolve Global Solutions" description="Notes from the field on Microsoft Copilot, AI document approval, Microsoft Fabric, and the modern workplace.">
+  <Hero
+    eyebrow="Blog"
+    title="Field notes from a Microsoft consultancy."
+    description="Practical write-ups on Copilot rollouts, AI document approval, Microsoft Fabric, and modernizing the workplace — written by the people doing the work."
+  />
+
+  <section class="section">
+    <div class="container-page">
+      {posts.length === 0 ? (
+        <p class="text-ink-600">No posts yet — check back soon.</p>
+      ) : (
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post) => (
+            <a href={`/blog/${post.slug}`} class="card p-7 flex flex-col group">
+              {post.data.heroEyebrow && <span class="eyebrow">{post.data.heroEyebrow}</span>}
+              <h2 class="h3 mt-3 group-hover:text-brand-700 transition-colors">{post.data.title}</h2>
+              <p class="mt-2 text-sm text-ink-600 leading-relaxed">{post.data.description}</p>
+              <div class="mt-auto pt-5 flex items-center justify-between text-xs text-ink-500">
+                <span>{fmt(post.data.pubDate)}</span>
+                <span class="text-brand-700 group-hover:text-brand-800">Read →</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

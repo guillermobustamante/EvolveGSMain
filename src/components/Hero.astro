@@ -1,0 +1,51 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  highlight?: string;
+  description: string;
+  primaryCta?: { href: string; label: string };
+  secondaryCta?: { href: string; label: string };
+}
+
+const {
+  eyebrow,
+  title,
+  highlight,
+  description,
+  primaryCta,
+  secondaryCta,
+} = Astro.props;
+---
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 bg-hero-gradient" aria-hidden="true"></div>
+  <div class="absolute inset-x-0 top-0 -z-10 h-[28rem] bg-gradient-to-b from-brand-50/60 to-transparent" aria-hidden="true"></div>
+
+  <div class="container-page relative pt-20 pb-24 sm:pt-28 sm:pb-32 lg:pt-32">
+    <div class="max-w-3xl">
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h1 class="h1 mt-5">
+        {title}
+        {highlight && (
+          <span class="block bg-gradient-to-r from-brand-700 via-brand-500 to-accent-500 bg-clip-text text-transparent">
+            {highlight}
+          </span>
+        )}
+      </h1>
+      <p class="lead mt-6 max-w-2xl">{description}</p>
+      {(primaryCta || secondaryCta) && (
+        <div class="mt-9 flex flex-wrap gap-3">
+          {primaryCta && (
+            <a href={primaryCta.href} class="btn-primary">
+              {primaryCta.label}
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          )}
+          {secondaryCta && (
+            <a href={secondaryCta.href} class="btn-secondary">{secondaryCta.label}</a>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

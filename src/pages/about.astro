@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Stat from '../components/Stat.astro';
+import CTA from '../components/CTA.astro';
+---
+<BaseLayout
+  title="About — Evolve Global Solutions"
+  description="Boutique consulting that delivers solutions to modern industry problems. Senior experts who help companies leverage their Microsoft investment, modernize the workplace, and reduce security risk."
+>
+  <Hero
+    eyebrow="About us"
+    title="A boutique Microsoft partner with senior people only."
+    description="We deliver solutions to modern industry problems with highly skilled individuals who are experts in their area. We help companies leverage their technology investment, modernize the workplace, and reduce security risk — all while lowering IT cost and improving business processes."
+    primaryCta={{ href: '/contact', label: 'Work with us' }}
+  />
+
+  <section class="section-tight">
+    <div class="container-page grid gap-4 sm:grid-cols-3">
+      <Stat value="10+" label="Years delivering Microsoft projects" />
+      <Stat value="3" label="Countries with delivery teams" />
+      <Stat value="100%" label="Senior consultants on every engagement" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-page grid gap-12 lg:grid-cols-3">
+      <div class="card p-8">
+        <span class="eyebrow">How we do it</span>
+        <h3 class="h3 mt-4">Listen first. Solve the root cause.</h3>
+        <p class="mt-3 text-ink-600 leading-relaxed">
+          We make sure we understand your problem before we propose anything. We have the tools and experience to find
+          the root cause of the pain, and the manpower to turn it into a successful project — in partnership with you.
+        </p>
+      </div>
+      <div class="card p-8">
+        <span class="eyebrow">Why we do it</span>
+        <h3 class="h3 mt-4">Your success keeps us going.</h3>
+        <p class="mt-3 text-ink-600 leading-relaxed">
+          We are motivated by improving your process, your business, your cost structure, and your quality.
+          Your success is our motivation — and we do not stop at "good." We aspire to deliver great projects.
+        </p>
+      </div>
+      <div class="card p-8">
+        <span class="eyebrow">What we believe</span>
+        <h3 class="h3 mt-4">AI accelerates, people decide.</h3>
+        <p class="mt-3 text-ink-600 leading-relaxed">
+          Copilot and AI agents will reshape the workplace — but only if the foundations are right.
+          Data is governed, processes are clean, and people are trained. That is what we build.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-ink-50">
+    <div class="container-page">
+      <div class="max-w-2xl">
+        <span class="eyebrow">Our principles</span>
+        <h2 class="h2 mt-4">Four commitments we never break</h2>
+      </div>
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        {[
+          ['Senior people on the work, not just the pitch', 'The architect who scopes the project is on the project. No bait-and-switch.'],
+          ['Fixed-fee with shared backlogs', 'Predictable cost. Transparent priority calls. No mystery invoices.'],
+          ['Microsoft reference architectures', 'We stay aligned with Microsoft so your platform stays supported and future-proof.'],
+          ['Change management is not optional', 'Adoption is half the value. We train, communicate, and measure.'],
+        ].map(([title, body]) => (
+          <div class="rounded-2xl bg-white p-6 ring-1 ring-ink-200 shadow-soft">
+            <h3 class="text-lg font-semibold text-ink-900">{title}</h3>
+            <p class="mt-2 text-sm text-ink-600 leading-relaxed">{body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>

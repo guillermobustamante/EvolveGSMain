@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import Stat from '../components/Stat.astro';
+import Logo from '../components/Logo.astro';
+import CTA from '../components/CTA.astro';
+---
+<BaseLayout
+  title="Evolve Global Solutions — Microsoft 365, Copilot & Modern Workplace Consulting"
+  description="Boutique Microsoft consulting partner. AI-powered document approval, Copilot adoption, SharePoint modernization, Power Platform, and Microsoft Fabric — delivered nearshore."
+>
+  <Hero
+    eyebrow="Microsoft Consulting · Document Approval Solutions"
+    title="Modernize the way your business approves, automates, and decides."
+    highlight="Powered by Microsoft Copilot."
+    description="We help mid-market and enterprise teams accelerate Copilot adoption, redesign document approval with AI, and turn data into action with Microsoft Fabric — all without ballooning IT cost."
+    primaryCta={{ href: '/contact', label: 'Book a discovery call' }}
+    secondaryCta={{ href: '/services', label: 'See what we do' }}
+  />
+
+  <section class="section-tight bg-white">
+    <div class="container-page grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <Stat value="50+" label="Microsoft 365 tenants modernized" />
+      <Stat value="100%" label="Nearshore delivery, your time zone" />
+      <Stat value="< 1 day" label="Avg. response to new inquiries" />
+      <Stat value="2014" label="Trusted partner since" />
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <div class="container-page">
+      <div class="max-w-2xl">
+        <span class="eyebrow">What we do</span>
+        <h2 class="h2 mt-4">Services built for the AI-first workplace</h2>
+        <p class="lead mt-4">From Copilot governance to intelligent document approval, we deliver outcomes — not slideware.</p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <ServiceCard
+          icon="sparkles"
+          title="Microsoft Copilot Adoption"
+          description="Roll out Copilot for Microsoft 365 with governance, identity, data, and change management built in from day one."
+          bullets={[
+            'Copilot readiness assessment',
+            'Purview & sensitivity labels',
+            'Pilot, training, and value tracking',
+          ]}
+          href="/services#copilot"
+        />
+        <ServiceCard
+          icon="bolt"
+          title="AI Document Approval"
+          description="Reimagine approval workflows with Copilot Studio agents, Power Automate, and intelligent extraction."
+          bullets={[
+            'Intelligent intake & routing',
+            'Approval agents & exception handling',
+            'Audit-ready compliance trail',
+          ]}
+          href="/services#approval"
+        />
+        <ServiceCard
+          icon="share"
+          title="SharePoint & Modern Workplace"
+          description="Migrate, consolidate, and modernize SharePoint, Teams, and OneDrive into a governed intranet platform."
+          bullets={[
+            'Tenant-to-tenant migration',
+            'Intranet & hub site design',
+            'Records & retention policy',
+          ]}
+          href="/services#sharepoint"
+        />
+        <ServiceCard
+          icon="layers"
+          title="Power Platform & Modern Apps"
+          description="Replace fragile spreadsheets and legacy apps with Power Apps, Power Automate, and Dataverse."
+          bullets={[
+            'Citizen-developer enablement',
+            'CoE Starter Kit & ALM',
+            'Custom connectors & APIs',
+          ]}
+          href="/services#power-platform"
+        />
+        <ServiceCard
+          icon="chart"
+          title="Microsoft Fabric & Analytics"
+          description="Unify data, build semantic models, and surface trustworthy insights with Microsoft Fabric and Power BI."
+          bullets={[
+            'OneLake & medallion architecture',
+            'Semantic models & verified answers',
+            'Embedded Power BI experiences',
+          ]}
+          href="/services#fabric"
+        />
+        <ServiceCard
+          icon="globe"
+          title="Nearshore Delivery"
+          description="Senior engineers in your time zone, blended rates, and tight feedback loops — the right way to outsource."
+          bullets={[
+            'Same-time-zone collaboration',
+            'Cultural alignment',
+            'Up to 40% cost reduction',
+          ]}
+          href="/services#nearshore"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-ink-50">
+    <div class="container-page grid gap-12 lg:grid-cols-2 lg:items-center">
+      <div>
+        <span class="eyebrow">Why Evolve</span>
+        <h2 class="h2 mt-4">A boutique partner that ships.</h2>
+        <p class="lead mt-4">
+          We are not a body shop. We are senior architects, developers, and change managers who only take on engagements where
+          we can deliver measurable business outcomes — and we say no to the ones we can't.
+        </p>
+        <ul class="mt-6 space-y-3 text-ink-700">
+          {[
+            ['Outcome-driven', 'Every engagement starts with a measurable business goal — not a list of features.'],
+            ['Senior teams', 'No "learning on your dime." Architects and leads do the work, not just the slides.'],
+            ['Microsoft-aligned', 'We follow Microsoft’s reference architectures so your investment stays supported.'],
+            ['Transparent', 'Fixed-fee proposals, weekly status, and shared backlogs you fully own.'],
+          ].map(([title, body]) => (
+            <li class="flex gap-3">
+              <svg viewBox="0 0 24 24" class="mt-1 h-5 w-5 flex-none text-accent-600" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12l5 5L20 7"/></svg>
+              <div><span class="font-semibold text-ink-900">{title}.</span> <span class="text-ink-600">{body}</span></div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="relative">
+        <div class="absolute -inset-4 rounded-3xl bg-cta-gradient opacity-20 blur-2xl" aria-hidden="true"></div>
+        <div class="relative card p-8">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-100">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l3-3 4 4 8-8 3 3-11 11z"/></svg>
+            </span>
+            <h3 class="h3">How we engage</h3>
+          </div>
+          <ol class="mt-6 space-y-5">
+            {[
+              ['Discover', 'Two-week assessment to map current state, pains, and the prize.'],
+              ['Design', 'Reference architecture, roadmap, and a clear cost model you can defend internally.'],
+              ['Deliver', 'Sprints with weekly demos, fixed-fee guardrails, and Microsoft best practices.'],
+              ['Adopt', 'Change management, training, and value tracking so the investment sticks.'],
+            ].map(([phase, body], i) => (
+              <li class="flex gap-4">
+                <div class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-brand-700 text-sm font-semibold text-white">{i + 1}</div>
+                <div>
+                  <div class="font-semibold text-ink-900">{phase}</div>
+                  <div class="text-sm text-ink-600">{body}</div>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container-page">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <span class="eyebrow">Trusted ecosystem</span>
+          <h2 class="h2 mt-3">Partners that power our delivery</h2>
+        </div>
+        <a href="/partners" class="btn-ghost">All partners →</a>
+      </div>
+      <div class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+        <Logo name="Microsoft" />
+        <Logo name="Azure" />
+        <Logo name="Power Platform" />
+        <Logo name="Microsoft Fabric" />
+        <Logo name="ARAS PLM" />
+        <Logo name="Copilot Studio" />
+      </div>
+    </div>
+  </section>
+
+  <CTA />
+</BaseLayout>
