@@ -2,6 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ───────────────────────────────────────────────────────────
+ * Brand typography — Sansation (per Brand Guidelines v1.0).
+ *
+ * Drop the WOFF2 files into /public/fonts/sansation/ to enable
+ * the brand typeface. Files expected:
+ *   - sansation-light.woff2
+ *   - sansation-regular.woff2
+ *   - sansation-bold.woff2
+ *
+ * Until those files are present, the site renders in the
+ * brand-approved fallback (Arial → system sans).
+ * ─────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Sansation';
+  src: url('/fonts/sansation/sansation-light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sansation';
+  src: url('/fonts/sansation/sansation-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sansation';
+  src: url('/fonts/sansation/sansation-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -9,10 +43,21 @@
     -moz-osx-font-smoothing: grayscale;
   }
   body {
-    @apply bg-white text-ink-800 font-sans;
+    /* Charcoal Gray #4D4D4D = ink-700 (primary text per brand) */
+    @apply bg-white text-ink-700 font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-ink-900;
   }
   ::selection {
-    @apply bg-brand-500/20 text-brand-900;
+    @apply bg-brand-600/20 text-brand-800;
+  }
+  /* Reduced motion respect */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -20,40 +65,39 @@
   .container-page {
     @apply mx-auto w-full max-w-7xl px-6 lg:px-8;
   }
+
+  /* Buttons — Primary Teal anchor per brand */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-500;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold tracking-wide transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-600;
   }
   .btn-primary {
-    @apply btn bg-brand-700 text-white shadow-soft hover:bg-brand-800 hover:shadow-lifted active:translate-y-px;
+    @apply btn bg-brand-600 text-white shadow-soft hover:bg-brand-700 hover:shadow-lifted active:translate-y-px;
   }
   .btn-secondary {
-    @apply btn bg-white text-brand-800 ring-1 ring-inset ring-ink-200 hover:bg-ink-50 hover:ring-ink-300;
+    @apply btn bg-white text-brand-700 ring-1 ring-inset ring-ink-200 hover:bg-ink-50 hover:ring-brand-200 hover:text-brand-800;
   }
   .btn-ghost {
-    @apply btn text-brand-700 hover:bg-brand-50;
+    @apply btn text-brand-700 hover:bg-brand-50 hover:text-brand-800;
   }
+  .btn-on-dark {
+    @apply btn bg-white text-brand-700 hover:bg-brand-50 hover:text-brand-800;
+  }
+
+  /* Surfaces */
   .card {
-    @apply rounded-2xl bg-white shadow-soft ring-1 ring-ink-200/70 transition-all duration-200 hover:shadow-lifted hover:-translate-y-0.5;
+    @apply rounded-2xl bg-white shadow-soft ring-1 ring-ink-200 transition-all duration-200 hover:shadow-lifted hover:-translate-y-0.5;
   }
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-700 ring-1 ring-inset ring-brand-100;
+    @apply inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-700 ring-1 ring-inset ring-brand-100;
   }
-  .section {
-    @apply py-20 sm:py-24 lg:py-28;
-  }
-  .section-tight {
-    @apply py-14 sm:py-16;
-  }
-  .h1 {
-    @apply text-4xl font-semibold tracking-tight text-ink-900 sm:text-5xl lg:text-6xl;
-  }
-  .h2 {
-    @apply text-3xl font-semibold tracking-tight text-ink-900 sm:text-4xl;
-  }
-  .h3 {
-    @apply text-xl font-semibold tracking-tight text-ink-900 sm:text-2xl;
-  }
-  .lead {
-    @apply text-lg leading-relaxed text-ink-600 sm:text-xl;
-  }
+
+  /* Sections */
+  .section       { @apply py-20 sm:py-24 lg:py-28; }
+  .section-tight { @apply py-14 sm:py-16; }
+
+  /* Headings — brand voice is bold and confident */
+  .h1   { @apply text-4xl font-bold tracking-tight text-ink-900 sm:text-5xl lg:text-6xl; }
+  .h2   { @apply text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl; }
+  .h3   { @apply text-xl font-bold tracking-tight text-ink-900 sm:text-2xl; }
+  .lead { @apply text-lg leading-relaxed text-ink-700 sm:text-xl; }
 }

@@ -4,15 +4,18 @@ const year = new Date().getFullYear();
 <footer class="mt-24 border-t border-ink-200 bg-ink-50">
   <div class="container-page py-14 grid gap-10 md:grid-cols-4">
     <div class="md:col-span-2">
-      <div class="flex items-center gap-3">
-        <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-cta-gradient text-white shadow-soft">
-          <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
-            <path fill="currentColor" d="M5 4h14v3H8v3h9v3H8v4h11v3H5z" />
-          </svg>
-        </span>
-        <span class="text-sm font-semibold text-ink-900">Evolve Global Solutions</span>
-      </div>
-      <p class="mt-4 max-w-md text-sm text-ink-600">
+      <a href="/" class="inline-flex items-center" aria-label="Evolve Global Solutions">
+        <img
+          src="/brand/evolve-lockup.png"
+          alt="Evolve Global Solutions — We Provide Value"
+          width="220"
+          height="54"
+          class="h-10 w-auto"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      <p class="mt-5 max-w-md text-sm text-ink-700 leading-relaxed">
         Boutique Microsoft consulting partner specializing in AI-powered document approval, Microsoft Copilot adoption,
         SharePoint modernization, Power Platform, and Microsoft Fabric — delivered nearshore.
       </p>
@@ -24,7 +27,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div>
-      <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-500">Company</h3>
+      <h3 class="text-xs font-bold uppercase tracking-wider text-ink-700">Company</h3>
       <ul class="mt-4 space-y-2 text-sm text-ink-700">
         <li><a href="/about" class="hover:text-brand-700">About</a></li>
         <li><a href="/services" class="hover:text-brand-700">Services</a></li>
@@ -34,7 +37,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div>
-      <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-500">Resources</h3>
+      <h3 class="text-xs font-bold uppercase tracking-wider text-ink-700">Resources</h3>
       <ul class="mt-4 space-y-2 text-sm text-ink-700">
         <li><a href="/blog" class="hover:text-brand-700">Blog</a></li>
         <li><a href="/powerbi" class="hover:text-brand-700">Power BI showcase</a></li>
@@ -45,7 +48,7 @@ const year = new Date().getFullYear();
   </div>
 
   <div class="border-t border-ink-200">
-    <div class="container-page py-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-xs text-ink-500">
+    <div class="container-page py-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-xs text-ink-600">
       <p>© {year} Evolve Global Solutions Inc. All rights reserved.</p>
       <p>Built on Astro + Azure Static Web Apps.</p>
     </div>

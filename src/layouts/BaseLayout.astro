@@ -10,9 +10,9 @@ interface Props {
 }
 
 const {
-  title = 'Evolve Global Solutions — Microsoft 365, Copilot & Modern Workplace Consulting',
+  title = 'Evolve Global Solutions — We Provide Value',
   description = 'Boutique Microsoft consulting partner. AI-powered document approval, Microsoft Copilot adoption, SharePoint modernization, Power Platform, and Microsoft Fabric — delivered nearshore.',
-  image = '/og-image.png',
+  image = '/brand/evolve-lockup.png',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString();
@@ -23,14 +23,19 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString(
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/brand/favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/brand/apple-touch-icon.png" />
     <link rel="canonical" href={canonical} />
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#143285" />
+    <!-- Primary Teal — brand anchor -->
+    <meta name="theme-color" content="#027FA1" />
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Evolve Global Solutions" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />

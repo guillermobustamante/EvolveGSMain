@@ -12,18 +12,18 @@ const nav = [
 const isActive = (href: string) =>
   href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(href + '/');
 ---
-<header class="sticky top-0 z-40 border-b border-ink-200/70 bg-white/85 backdrop-blur supports-[backdrop-filter]:bg-white/70">
-  <div class="container-page flex h-16 items-center justify-between gap-4">
-    <a href="/" class="flex items-center gap-3 group">
-      <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-cta-gradient text-white shadow-soft transition-transform group-hover:scale-105">
-        <svg viewBox="0 0 24 24" class="h-5 w-5" aria-hidden="true">
-          <path fill="currentColor" d="M5 4h14v3H8v3h9v3H8v4h11v3H5z" />
-        </svg>
-      </span>
-      <span class="flex flex-col leading-tight">
-        <span class="text-sm font-semibold text-ink-900">Evolve Global Solutions</span>
-        <span class="text-[11px] uppercase tracking-wider text-ink-400">Microsoft Consulting</span>
-      </span>
+<header class="sticky top-0 z-40 border-b border-ink-200 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/75">
+  <div class="container-page flex h-20 items-center justify-between gap-4">
+    <a href="/" class="flex items-center group" aria-label="Evolve Global Solutions — Home">
+      <img
+        src="/brand/evolve-lockup.png"
+        alt="Evolve Global Solutions — We Provide Value"
+        width="220"
+        height="54"
+        class="h-9 w-auto sm:h-10"
+        loading="eager"
+        decoding="async"
+      />
     </a>
 
     <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
@@ -31,10 +31,10 @@ const isActive = (href: string) =>
         <a
           href={item.href}
           class:list={[
-            'rounded-full px-3 py-2 text-sm font-medium transition-colors',
+            'rounded-full px-3 py-2 text-sm font-bold transition-colors',
             isActive(item.href)
-              ? 'bg-brand-50 text-brand-800'
-              : 'text-ink-600 hover:bg-ink-50 hover:text-ink-900',
+              ? 'bg-brand-50 text-brand-700'
+              : 'text-ink-700 hover:bg-ink-50 hover:text-ink-900',
           ]}
         >
           {item.label}
@@ -72,16 +72,16 @@ const isActive = (href: string) =>
         <a
           href={item.href}
           class:list={[
-            'rounded-lg px-3 py-2 text-sm font-medium',
+            'rounded-lg px-3 py-2 text-sm font-bold',
             isActive(item.href)
-              ? 'bg-brand-50 text-brand-800'
+              ? 'bg-brand-50 text-brand-700'
               : 'text-ink-700 hover:bg-ink-50',
           ]}
         >
           {item.label}
         </a>
       ))}
-      <a href="https://www.evolvegs.com/login" class="rounded-lg px-3 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50">Client Login</a>
+      <a href="https://www.evolvegs.com/login" class="rounded-lg px-3 py-2 text-sm font-bold text-ink-700 hover:bg-ink-50">Client Login</a>
     </nav>
   </div>
 </header>

@@ -102,6 +102,29 @@ Once deployment is green:
 
 ---
 
+## Brand assets
+
+All visual identity follows **Evolve Global Solutions Brand Guidelines v1.0**.
+
+- **Logos** (in `public/brand/`):
+  - `evolve-lockup.png` — primary horizontal lockup (default in header & footer)
+  - `evolve-lockup-reverse.png` — white version for dark backgrounds
+  - `evolve-symbol.png` — symbol only, for compact placements
+  - `evolve-symbol-reverse.png` — white symbol for dark backgrounds
+  - `favicon-32.png`, `favicon-192.png`, `favicon-512.png`, `apple-touch-icon.png`
+- **Color palette** (in `tailwind.config.mjs`):
+  - `brand-600` = **Primary Teal** `#027FA1` (master brand color)
+  - `accent-500` = **Bright Cyan** `#0BBBEF`, `accent-400` = **Sky** `#3ECEE8`, `accent-300` = **Aqua** `#64F6FF`
+  - `ink-700` = **Charcoal Gray** `#4D4D4D` (primary text), `ink-300` = **Light Gray** `#CDCDCD`
+- **Typography** (in `src/styles/global.css`):
+  - Primary: **Sansation** (drop WOFF2 files into `public/fonts/sansation/` — see README there)
+  - Fallback: **Arial** → system sans (brand-approved fallback chain)
+- **Tagline**: "We Provide Value" — surfaced as the hero eyebrow on the homepage and in the logo lockup
+
+The brand guideline PDF lives at `/mnt/workspace/input/evolve_brand_guidelines.pdf` (not committed). Refer to it for clear-space rules, do's and don'ts, and stationery patterns before producing any new collateral.
+
+---
+
 ## Editing content
 
 - **Hero copy, services, products, partners** — edit the matching file in
